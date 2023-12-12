@@ -1,0 +1,28 @@
+dataset:
+  train_data_path: data/train_sections_data.csv
+  test_data_path: data/test_sections_data.csv
+  val_split: 0.2
+  num_data_columns: 10
+  tokenizer_name: distilbert-base-uncased
+  text_columns: ["Text"]
+  bool_columns: ["IsBold", "IsItalic", "IsUnderlined"]
+  target_column: Label
+model:
+  model_name: distilbert-base-uncased
+  num_classes: 2
+train:
+  output_dir: results
+  logging_dir: logs
+  train_batch_size: 32
+  eval_batch_size: 64
+  num_train_epochs: 1
+  warmup_steps: 300
+  weight_decay: 0.01
+  logging_steps: 10
+  evaluation_strategy: epoch
+  save_strategy: epoch
+  load_best_model_at_end: True
+evaluate:
+  metric: accuracy
+  
+  
